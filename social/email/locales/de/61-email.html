@@ -1,0 +1,55 @@
+
+<script type="text/x-red" data-help-name="e-mail">
+    <p>Sendet die <code>msg.payload</code> als E-Mail, mit dem Betreff <code>msg.topic</code>.</p>
+    <p>Der Standardnachrichtenempfänger kann im Knoten konfiguriert werden, wenn er leer bleibt, 
+        sollte er über die Eigenschaft <code>msg.to</code> der eingehenden Nachricht eingestellt werden. 
+        Wenn leer gelassen, können Sie auch <code>msg.cc</code> und/oder <code>msg.bcc</code> Eigenschaften angeben.</p>
+    <p>Optional kann in der Payload <code>msg.from</code> gesetzt werden, 
+        was den Standardwert <code>userid</code> überschreibt.</p>
+    <p>Die Nutzlast kann im html-Format sein.</p>
+    <p>Wenn die Nutzlast ein binärer Puffer ist, wird sie in einen Anhang umgewandelt.
+            Der Dateiname sollte mit <code>msg.filename</code> eingestellt werden. 
+            Optional kann <code>msg.description</code> für den Haupttext hinzugefügt werden.</p>
+    <p>Alternativ können Sie auch <code>msg.attachments</code> angeben, die ein Array von einem 
+        oder mehreren Attachments im Format <a href="https://www.npmjs.com/package/nodemailer#attachments" target="_new">nodemailer</a> enthalten sollte.</p>
+    <p>Wenn es der Empfänger wünscht, kann man auch ein Objekt <code>msg.envelope</code> übergeben, 
+        das typischerweise zusätzliche Eigenschaften für <code>from</code> und <code>to</code> enthält.</p>
+    <p>Wenn man eigene signierte Zertifikate hat, kann sich Nodemailer darüber beschweren und den Versand der Nachricht verweigern. 
+        In diesem Fall kann man versuchen, TLS auszuschalten.</p>
+    <p>Hinweis: verwendet SMTP mit SSL auf dem Port 465.</p>
+</script>
+
+
+
+<script type="text/x-red" data-help-name="e-mail in">
+    <p>Holt sich wiederholt eine <b>einzelne E-Mail</b> von einem IMAP-Server und leitet sie als Nachricht weiter, 
+        wenn sie nicht bereits bekannt ist.</p>
+    <p>Der Betreff wird in <code>msg.topic</code> geladen und <code>msg.payload</code> ist der reine Haupttext.
+        Wenn es text/html gibt, dann wird das in <code>msg.html</code> zurückgegeben.
+        <code>msg.from</code> und <code>msg.date</code> werden auch gesetzt, wenn man sie braucht.</p>
+    <p>Zusätzlich enthält <code>msg.header</code> das komplette Headerobjekt inklusive <i>to</i>, <i>cc</i> 
+        und andere potentiell nützliche Eigenschaften.</p>
+    <p>Verwendet das IMAP-Modul.</p>
+    <p><b>Hinweis:</b> Dieser Knoten holt <i>nur</i> die neueste einzelne E-Mail aus dem Posteingang, also stellen Sie die Wiederholungszeit entsprechend ein.</p>
+    <p>Hinweis: verwendet IMAP mit SSL auf Port 993.</p>
+    <p>Alle Anhänge, die in der eingehenden E-Mail enthalten sind, befinden sich in der Eigenschaft <code>msg.attachments</code>.  
+        Dies ist ein Array von Objekten, bei dem jedes Objekt eine bestimmte Anlage darstellt.  
+        Das Format des Objekts ist:</p>
+<pre>
+{
+  contentType:        // The MIME content description
+  fileName:           // A suggested file name associated with this attachment
+  transferEncoding:   // How was the original email attachment encodded?
+  contentDisposition: // Unknown
+  generatedFileName:  // A suggested file name associated with this attachment
+  contentId:          // A unique generated ID for this attachment
+  checksum:           // A checksum against the data
+  length:             // Size of data in bytes
+  content:            // The actual content of the data contained in a Node.js Buffer object
+                      // We can turn this into a base64 data string with content.toString('base64')
+}
+</pre>
+<p>Bei POP3 sind die Standardportnummern 110 für einfaches TCP und 995 für SSL.  Bei IMAP sind die Portnummern 143 für einfaches TCP und 993 für SSL.</p>
+<p>Das maximale Aktualisierungsintervall beträgt 2147483 Sekunden (24,8 Tage).</p>
+
+</script>

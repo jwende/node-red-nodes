@@ -1,0 +1,51 @@
+{
+    "email": {
+        "email": "E-Mail",
+        "label": {
+            "to": "To",
+            "server": "Server",
+            "port": "Port",
+            "useSecureConnection": "Benutze sichere Verbindung",
+            "userid": "Benutzer",
+            "password": "Passwort",
+            "repeat": "Aktualisieren",
+            "seconds": "Sekunden",
+            "folder": "Ordner",
+            "protocol": "Protokoll",
+            "useSSL": "Benutze SSL?",
+            "useTLS": "Benutze TLS?",
+            "disposition": "Disposition",
+            "none": "Keine",
+            "read": "Als gelesen markieren",
+            "delete": "Löschen"
+        },
+        "default-message": "__description__\n\Datei von Node-RED ist angehangen: __filename__",
+        "tip": {
+            "cred": "<b>Note:</b> Die Sicherheitsinformationen wurden aus der globalen Datei emailkeys.js kopiert.",
+            "recent": "Tipp: Ruft nur die letzte einzelne E-Mail ab."
+        },
+        "status": {
+            "messagesent": "Nachricht übermittelt: __response__",
+            "fetching": "Abrufen",
+            "foldererror": "Fehler beim Abrufen des Ordners",
+            "messageerror": "Fehler beim Abrufen der Nachricht",
+            "message": "Nachricht #__number__",
+            "newemail": "Neue E-Mail empfangen: __topic__",
+            "duplicate": "Duplikat nicht versandt: __topic__",
+            "inboxzero": "Sie haben den Posteingang gelehrt.",
+            "sending": "Beim Senden",
+            "sendfail": "Senden fehlgeschlagen",
+            "connecterror": "Verbindungsfehler"
+        },
+        "errors": {
+            "nouserid": "Kein E-Mail Benutzer gesetzt",
+            "nopassword": "Kein E-Mail Passwort gesetzt",
+            "nocredentials": "Keine E-Mail Sicherheitsinformationen gefunden. Siehe Infofenster.",
+            "nosmtptransport": "Kein SMTP Transport. Siehe Infofenster.",
+            "nopayload": "Keine zu sendende Nutzlast",
+            "fetchfail": "Fehler beim Abrufen des Ordners: __folder__",
+            "messageerror": "Fehlermeldung beim Abruf: __error__",
+            "refreshtoolarge": "Aktualisierungsintervall ist zu gross. Begrenzt auf 2147483 Sekunden."
+        }
+    }
+}
